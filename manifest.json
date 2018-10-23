@@ -1,0 +1,6 @@
+{
+    "name": "Copy customer details",
+    "version": "1.0",
+    "description": "Copy customer details from an rfq with the click of a button!",
+    "manifest_version": 2
+  }
