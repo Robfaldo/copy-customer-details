@@ -2,5 +2,13 @@
     "name": "Copy customer details",
     "version": "1.0",
     "description": "Copy customer details from an rfq with the click of a button!",
+    "permissions": ["declarativeContent", "storage"],
+    "background": {
+      "scripts": ["background.js"],
+      "persistent": false
+    },
+    "page_action": {
+      "default_popup": "popup.html"
+    },
     "manifest_version": 2
-  }
+}
