@@ -19,5 +19,10 @@ copyDetails.onclick = function(element) {
       //Here we have just the innerHTML and not DOM structure
       chrome.extension.getBackgroundPage().console.log('Popup script:')
       chrome.extension.getBackgroundPage().console.log(results[0]);
+
+      chrome.runtime.sendMessage({message:'hi there'}, function(response) {
+        chrome.extension.getBackgroundPage().console.log(response);
+      });
+
   });
 };

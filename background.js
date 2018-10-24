@@ -6,6 +6,12 @@ chrome.runtime.onInstalled.addListener(function() {
   });
 });
 
+chrome.runtime.onMessage.addListener(
+  function (request, sender, sendResponse) {
+    console.log("reaching listener onmessage")
+    if (request.message === "hi there")
+      sendResponse({message: "hi to you too"});
+  });
 
 // I dont think this is doing anything
 chrome.runtime.onInstalled.addListener(function() {

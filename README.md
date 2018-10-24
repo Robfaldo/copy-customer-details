@@ -13,3 +13,6 @@ This one explains how I get the document from the current tab
 https://code.i-harness.com/en/q/12d7bcc
 
 This one explains how to add contextMenus (right click options)
+
+If the other web pages don't show the data: 
+https://developer.chrome.com/extensions/manifest/externally_connectable
