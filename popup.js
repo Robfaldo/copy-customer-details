@@ -7,6 +7,8 @@ copyDetails.onclick = function(element) {
       //You can play with your DOM here or check URL against your regex
       console.log('Tab script:');
       console.log(document.body);
+      console.log(document.body.innerHTML);
+      console.log("tab script above")
       return document.body.innerHTML;
   }
 
@@ -15,7 +17,7 @@ copyDetails.onclick = function(element) {
       code: '(' + modifyDOM + ')();' //argument here is a string but function.toString() returns function's code
   }, (results) => {
       //Here we have just the innerHTML and not DOM structure
-      console.log('Popup script:')
-      console.log(results[0]);
+      chrome.extension.getBackgroundPage().console.log('Popup script:')
+      chrome.extension.getBackgroundPage().console.log(results[0]);
   });
 };
