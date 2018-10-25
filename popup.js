@@ -20,6 +20,20 @@ copyDetails.onclick = function(element) {
       chrome.extension.getBackgroundPage().console.log('Popup script:')
       chrome.extension.getBackgroundPage().console.log(results[0]);
 
+      let afterSnowplow = results[0].substring(results[0].indexOf('<div class="o-navigation">'));
+
+      chrome.extension.getBackgroundPage().console.log("afterSnowplow");
+      chrome.extension.getBackgroundPage().console.log(afterSnowplow);
+      chrome.extension.getBackgroundPage().console.log("afterSnowplow");
+
+
+      let parser = new DOMParser()
+      let doc = parser.parseFromString(results[0], "application/xml");
+
+      chrome.extension.getBackgroundPage().console.log("above");
+      chrome.extension.getBackgroundPage().console.log(doc);
+      chrome.extension.getBackgroundPage().console.log("below");
+
       chrome.runtime.sendMessage({message:'hi there'}, function(response) {
         chrome.extension.getBackgroundPage().console.log(response);
       });

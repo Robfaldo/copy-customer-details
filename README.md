@@ -14,5 +14,9 @@ https://code.i-harness.com/en/q/12d7bcc
 
 This one explains how to add contextMenus (right click options)
 
-If the other web pages don't show the data: 
+If the other web pages don't show the data:
 https://developer.chrome.com/extensions/manifest/externally_connectable
+
+
+helpful for creating onmessage/sendmessage events
+https://medium.com/@gilfink/using-messaging-in-chrome-extension-4ae65c0622f6
