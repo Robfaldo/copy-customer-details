@@ -1,7 +1,7 @@
 # copy-customer-details
 
 TODO:
-- Clicking button grabs the elements and puts them in storage
+- Clicking button grabs the elements and puts them in storage (DONE)
 - ability to paste them somehow
 - I added the context menu but it doesn't do anything, I need to work out how to tie the click of the button to the context menu somehow
 

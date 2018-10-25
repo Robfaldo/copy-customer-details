@@ -1,40 +1,27 @@
 let copyDetails = document.getElementById('copyDetails');
 
 copyDetails.onclick = function(element) {
-  chrome.extension.getBackgroundPage().console.log("HelloThere");
-
   function modifyDOM() {
-      //You can play with your DOM here or check URL against your regex
-      console.log('Tab script:');
-      console.log(document.body);
-      console.log(document.body.innerHTML);
-      console.log("tab script above")
-      return document.body.innerHTML;
+      const customerDetails = {
+        firstName: document.getElementById('customer_first_name').innerHTML,
+        lastName: document.getElementById('customer_last_name').innerHTML,
+        // TODO: clean this up
+        email: document.getElementById('customer_email_address').innerText.split('Generate Email')[0].slice(0, -1),
+        postcode: document.getElementById('customer_uk_postcode').innerHTML
+      }
+      return customerDetails
   }
 
-  //We have permission to access the activeTab, so we can call chrome.tabs.executeScript:
   chrome.tabs.executeScript({
       code: '(' + modifyDOM + ')();' //argument here is a string but function.toString() returns function's code
   }, (results) => {
-      //Here we have just the innerHTML and not DOM structure
-      chrome.extension.getBackgroundPage().console.log('Popup script:')
+      // this is the results of modifyDom
       chrome.extension.getBackgroundPage().console.log(results[0]);
 
-      let afterSnowplow = results[0].substring(results[0].indexOf('<div class="o-navigation">'));
+      const customerDetails = results[0];
 
-      chrome.extension.getBackgroundPage().console.log("afterSnowplow");
-      chrome.extension.getBackgroundPage().console.log(afterSnowplow);
-      chrome.extension.getBackgroundPage().console.log("afterSnowplow");
-
-
-      let parser = new DOMParser()
-      let doc = parser.parseFromString(results[0], "application/xml");
-
-      chrome.extension.getBackgroundPage().console.log("above");
-      chrome.extension.getBackgroundPage().console.log(doc);
-      chrome.extension.getBackgroundPage().console.log("below");
-
-      chrome.runtime.sendMessage({message:'hi there'}, function(response) {
+      // send the customer details as a message so they can be displayed
+      chrome.runtime.sendMessage({customerDetails: customerDetails}, function(response) {
         chrome.extension.getBackgroundPage().console.log(response);
       });
 
