@@ -33,11 +33,13 @@ copyDetails.onclick = function(element) {
 completeRFQ.onclick = function(element) {
   chrome.storage.sync.get(['key'], function(result) {
     chrome.tabs.executeScript({
-      code: `document.getElementById("backoffice_customer_form_first_name").value = "${result.key.firstName}"`
+      code: `document.getElementById("backoffice_customer_form_first_name").value = "${result.key.firstName}";
+              document.getElementById("backoffice_customer_form_email_address").value = "${result.key.email}";
+              document.getElementById("postcode_search").value = "${result.key.postcode}";
+              document.getElementById("backoffice_customer_form_last_name").value = "${result.key.lastName}";`
     });
    });
 };
-
 
 // This function extracts the info we need from the rfq page
 function modifyDOM() {
