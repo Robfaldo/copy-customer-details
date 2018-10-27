@@ -4,14 +4,14 @@ let completeRFQ = document.getElementById('completeRFQ');
 // Insert most recently stored customer details into the popup
 chrome.storage.sync.get(['key'], function(result) {
   chrome.extension.getBackgroundPage().console.log("1");
-  document.getElementById('firstName').innerHTML = result.key.firstName;
+  document.getElementById('firstName').innerHTML = `${result.key.firstName} ${result.key.lastName}`;
  });
 
 // When the new details are stored, get them and update details on popup
 chrome.runtime.onMessage.addListener(
  function (request, sender, sendResponse) {
   chrome.storage.sync.get(['key'], function(result) {
-    document.getElementById('firstName').innerHTML = result.key.firstName;
+    document.getElementById('firstName').innerHTML = `${result.key.firstName} ${result.key.lastName}`;
   });
   // TODO: Then I will need to make clicking the button copy it to clipboard
 });
