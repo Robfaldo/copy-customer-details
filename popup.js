@@ -1,5 +1,11 @@
 let copyDetails = document.getElementById('copyDetails');
 
+// on extensio open (?) load the storage and assign first name
+chrome.storage.sync.get(['key'], function(result) {
+  chrome.extension.getBackgroundPage().console.log("1");
+  document.getElementById('firstName').innerHTML = result.key.firstName;
+ });
+
 copyDetails.onclick = function(element) {
   function modifyDOM() {
       const customerDetails = {
@@ -12,18 +18,35 @@ copyDetails.onclick = function(element) {
       return customerDetails
   }
 
-  chrome.tabs.executeScript({
+  // on copy details click get the customer info from the page
+  function getDetailsFromPage() {
+    chrome.extension.getBackgroundPage().console.log("Will this go before 5?");
+
+    chrome.tabs.executeScript({
       code: '(' + modifyDOM + ')();' //argument here is a string but function.toString() returns function's code
-  }, (results) => {
-      // this is the results of modifyDom
-      chrome.extension.getBackgroundPage().console.log(results[0]);
+    }, (results) => {
 
-      const customerDetails = results[0];
-
-      // send the customer details as a message so they can be displayed
-      chrome.runtime.sendMessage({customerDetails: customerDetails}, function(response) {
-        chrome.extension.getBackgroundPage().console.log(response);
-      });
-
+    const customerDetails = results[0];
+    // send the customer details as a message to background so they can be stored
+    chrome.runtime.sendMessage({customerDetails: customerDetails}, function(response) {
+      chrome.extension.getBackgroundPage().console.log("2");
+      chrome.extension.getBackgroundPage().console.log(response);
+    });
   });
+}
+
+  function addStoredDetailsToButtons() {
+    chrome.storage.sync.get(['key'], function(result) {
+    chrome.extension.getBackgroundPage().console.log("5");
+
+    document.getElementById('firstName').innerHTML = result.key.firstName;
+    });
+  }
+
+  getDetailsFromPage()
+
+  addStoredDetailsToButtons()
+
+
+  // TODO: Then I will need to make clicking the button copy it to clipboard
 };
