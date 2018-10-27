@@ -36,7 +36,8 @@ completeRFQ.onclick = function(element) {
       code: `document.getElementById("backoffice_customer_form_first_name").value = "${result.key.firstName}";
               document.getElementById("backoffice_customer_form_email_address").value = "${result.key.email}";
               document.getElementById("postcode_search").value = "${result.key.postcode}";
-              document.getElementById("backoffice_customer_form_last_name").value = "${result.key.lastName}";`
+              document.getElementById("backoffice_customer_form_last_name").value = "${result.key.lastName}";
+              document.getElementById("backoffice_customer_form_telephone_number").value = "${result.key.telephoneNumber}";`
     });
    });
 };
@@ -47,7 +48,8 @@ function modifyDOM() {
       firstName: document.getElementById('customer_first_name').innerHTML,
       lastName: document.getElementById('customer_last_name').innerHTML,
       email: document.getElementById('customer_email_address').innerText.split('Generate Email')[0].slice(0, -1),
-      postcode: document.getElementById('customer_uk_postcode').innerHTML
+      postcode: document.getElementById('customer_uk_postcode').innerHTML,
+      telephoneNumber: document.getElementById('customer_telephone_number').innerHTML,
     }
     return customerDetails
 }
