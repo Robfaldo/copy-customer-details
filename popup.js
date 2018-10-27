@@ -29,10 +29,13 @@ copyDetails.onclick = function(element) {
   });
 };
 
+// When complete RFQ button is clicked, fill out the rfq form with customer details
 completeRFQ.onclick = function(element) {
-  chrome.tabs.executeScript({
-    code: 'console.log(document.getElementById("backoffice_customer_form_first_name").value = "Testing")'
-  });
+  chrome.storage.sync.get(['key'], function(result) {
+    chrome.tabs.executeScript({
+      code: `document.getElementById("backoffice_customer_form_first_name").value = "${result.key.firstName}"`
+    });
+   });
 };
 
 
