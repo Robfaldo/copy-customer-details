@@ -20,3 +20,14 @@ https://developer.chrome.com/extensions/manifest/externally_connectable
 
 helpful for creating onmessage/sendmessage events
 https://medium.com/@gilfink/using-messaging-in-chrome-extension-4ae65c0622f6
+
+
+This might be useful for clipboard;
+https://medium.com/@harrisrobin/an-introduction-to-the-new-async-clipboard-api-7e6567685a05
+
+Webextension Polyfill
+https://github.com/mozilla/webextension-polyfill
+
+
+Chrome extension await
+https://github.com/KeithHenry/chromeExtensionAsync
