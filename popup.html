@@ -3,15 +3,36 @@
     <head>
       <style>
         button {
-          height: auto;
-          width: auto;
+          height: 50px;
+          width: 80px;
           outline: none;
+          background-color: #e6c17d;
+          font-size: 15px;
+          margin-left: 10%;
+        }
+        body {
+          min-width: 100px; /* your desired width */
+          max-width: 100%;
+          position: relative;
+          vertical-align: middle;
+        }
+        #details {
+          height: auto;
+          width: 80px;
+          margin-left: 10%;
+          margin-top: 10px;
+          margin-bottom: 10px;
+          padding: 5px 0px 5px 0px;
+          font-size: 15px;
+          border: 1px solid #d7d7d7;
+          background-color: #00b73073;
+          text-align: center; 
         }
       </style>
     </head>
     <body>
       <button id="copyDetails">Copy Details</button>
-      <div class='details-button'>First Name: <button id="firstName">N/A</button></div>
+      <div id='details'>Current: <div id="firstName">N/A</div></div>
       <button id="completeRFQ">Complete RFQ</button>
       <script src="popup.js"></script>
     </body>
