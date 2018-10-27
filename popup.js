@@ -1,4 +1,5 @@
 let copyDetails = document.getElementById('copyDetails');
+let completeRFQ = document.getElementById('completeRFQ');
 
 // Insert most recently stored customer details into the popup
 chrome.storage.sync.get(['key'], function(result) {
@@ -27,6 +28,13 @@ copyDetails.onclick = function(element) {
     });
   });
 };
+
+completeRFQ.onclick = function(element) {
+  chrome.tabs.executeScript({
+    code: 'console.log(document.getElementById("backoffice_customer_form_first_name").value = "Testing")'
+  });
+};
+
 
 // This function extracts the info we need from the rfq page
 function modifyDOM() {
